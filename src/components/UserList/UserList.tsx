@@ -1,28 +1,27 @@
-import React, { useState } from "react";
 import { UserType } from "./UserType";
 import { UserListItem } from "./UserListItem";
 
 // Recoil
 import { useSetRecoilState } from "recoil";
 import { userAtomState } from "../recoil/userAtomState";
-// import { userAtomState } from "../recoil/userAtomState";
-// import { useRecoilState } from "recoil";
-
+import { useState } from "react";
 interface UsersListProp<UserType> {
   persons: UserType[];
 }
 
 export const UserList = ({ persons }: UsersListProp<UserType>) => {
+  const [isAllActive, setIsAllActive] = useState(false);
   const setUsersState = useSetRecoilState(userAtomState);
 
   const setAllActive = () => {
     setUsersState((prevUserState) => {
       console.log(prevUserState);
       const updatedUsers = prevUserState.map((user) => {
-        return { ...user, active: true };
+        return { ...user, active: !user.active };
       });
       return updatedUsers;
     });
+    setIsAllActive(!isAllActive);
   };
   return (
     <div className="flex justify-end">
@@ -43,7 +42,7 @@ export const UserList = ({ persons }: UsersListProp<UserType>) => {
                 className="px-4 py-2 font-medium text-center rounded-md shadow-sm cursor-pointer ring-1 ring-slate-700/10 hover:bg-slate-50"
                 onClick={setAllActive}
               >
-                Activate All
+                {!isAllActive ? "Activate All" : "Deactivate"}
               </div>
             </div>
           </div>

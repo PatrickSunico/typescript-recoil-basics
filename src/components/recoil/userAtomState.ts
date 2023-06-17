@@ -1,4 +1,4 @@
-import { RecoilState, atom, selector } from "recoil";
+import { atom } from "recoil";
 import { UserType } from "../UserList/UserType";
 
 export const userAtomState = atom<UserType[]>({
@@ -28,18 +28,7 @@ export const userAtomState = atom<UserType[]>({
       age: 20,
       active: false,
       profileImage: "https://tailwindui.com/img/avatar-3.jpg",
-      roles: ["Admin", "System Admin"],
+      roles: ["Admin", "System Admin", "QA"],
     },
   ],
 });
-
-// Manage Active Status
-// export const activeSelector = selector<boolean>({
-//   key: "activeSelector",
-//   get: ({ get }) => {
-//     const users = get(userAtomState);
-//     // Perform any logic to extract the 'active' boolean value from the user object
-//     // For example, if you want to check if any user is active, you can use Array.prototype.some() method
-//     return users.some((user) => user.active);
-//   },
-// });

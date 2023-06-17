@@ -1,12 +1,9 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { JSXElementConstructor, ReactNode, useState } from "react";
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
 
 import { HeadingContainer } from "./components/DefaultPropsContainer";
 import { FunctionalProps } from "./components/FunctionalProps";
 import { UserList } from "./components/UserList/UserList";
-
-import { UserType } from "./components/UserList/UserType";
 
 import { useRecoilValue } from "recoil";
 import { userAtomState } from "./components/recoil/userAtomState";
